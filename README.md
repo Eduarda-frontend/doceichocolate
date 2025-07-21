@@ -1,6 +1,5 @@
 # 🍫 **Doce & Chocolate** - Cardápio Online 🍰 
 ### (Projeto em desenvolvimento)
-![image](https://github.com/user-attachments/assets/3bfcd22f-db70-4a75-b6d4-8c8266c32e93)
 
 ## 📜 Descrição
 
@@ -8,8 +7,8 @@ O projeto **Doce & Chocolate** é uma aplicação web que exibe o cardápio de u
 
 A aplicação é construída utilizando Angular e integrações com o **Tailwind** para o layout e componentes responsivos.
 
-Você pode visualizar a versão online do projeto acessando o seguinte link:  
-👉 [Acesse o cardápio na Vercel](https://doceechocolate.vercel.app/)
+### Protótipo no Figma
+[Acesse o protótipo](https://www.figma.com/design/nvMOS2rFI1Rw4oxQfUe0rC/e-Commerce?node-id=0-1&p=f&t=lNTr89jSK3KQORkK-0)
 
 ## ⚙️ Funcionalidades
 
