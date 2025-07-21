@@ -1,27 +1,53 @@
-# DoceIChocolate
+# 🍫 **Doce & Chocolate** - Cardápio Online 🍰 (Projeto em desenvolvimento)
+![image](https://github.com/user-attachments/assets/3bfcd22f-db70-4a75-b6d4-8c8266c32e93)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
+## 📜 Descrição
 
-## Development server
+O projeto **Doce & Chocolate** é uma aplicação web que exibe o cardápio de uma confeitaria, permitindo aos clientes visualizar produtos, realizar pedidos diretamente pela interface e finalizar a compra de maneira simples. O sistema também oferece funcionalidades como busca de endereço pelo CEP e envio do pedido via WhatsApp 📱.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+A aplicação é construída utilizando Angular e integrações com o **Tailwind** para o layout e componentes responsivos.
 
-## Code scaffolding
+Você pode visualizar a versão online do projeto acessando o seguinte link:  
+👉 [Acesse o cardápio na Vercel](https://doceechocolate.vercel.app/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ⚙️ Funcionalidades
 
-## Build
+- **Exibição de Produtos**: Os produtos são apresentados com imagens, descrições e preços, permitindo aos usuários escolher itens do cardápio.
+- **Carrinho de Compras 🛒**: Os itens adicionados são listados no carrinho e o usuário pode visualizar seu pedido antes de finalizar.
+- **Busca de Endereço via CEP 📍**: O endereço do usuário pode ser preenchido automaticamente a partir do CEP fornecido, utilizando a API do **ViaCEP**.
+- **Formulário de Pedido 📝**: O usuário preenche seus dados (nome, telefone, endereço) e escolhe a forma de pagamento 💳 antes de finalizar o pedido.
+- **Envio de Pedido via WhatsApp 📲**: O pedido é gerado em formato de mensagem e enviado automaticamente para o WhatsApp do estabelecimento, com todos os dados preenchidos.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- # 🚀 Como Funciona
 
-## Running unit tests
+### 1. 🍰 **Visualização dos Produtos**
+- Os produtos são exibidos nas categorias "Bentô Cake", "Bolos Decorados" e "Brigadeiro".
+- Cada produto tem uma imagem, título, descrição e preço.
+- O usuário pode adicionar os itens ao carrinho clicando no botão "Adicionar ao carrinho".
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 2. 🛒 **Carrinho de Compras**
+- Após adicionar um item ao carrinho, o botão "Finalizar Pedido" aparece na seção do carrinho.
+- O usuário pode visualizar os itens selecionados e clicar para finalizar o pedido.
 
-## Running end-to-end tests
+### 3.📍 **Busca de Endereço**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- O usuário pode inserir o **CEP** no campo apropriado, e o sistema preencherá automaticamente os campos de **endereço**, **bairro**, **cidade** e **estado** utilizando a API do ViaCEP.
+- O preenchimento é feito automaticamente ao clicar no botão de "Buscar CEP".
 
-## Further help
+### 4. 📝 **Formulário de Pedido**
+- O formulário solicita o **nome**, **telefone**, **celular**, **endereço**, **bairro**, **complemento** e **forma de pagamento**.
+- O usuário pode escolher entre **dinheiro** ou **parcelamento**.
+- O botão de "Finalizar Pedido" gera uma mensagem com os dados do pedido e redireciona o usuário para o WhatsApp do estabelecimento.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 5. 📲 **Envio via WhatsApp**
+- Ao clicar no botão "Finalizar Pedido", o pedido é enviado para o WhatsApp com todos os dados preenchidos automaticamente.
+- A URL do WhatsApp é gerada dinamicamente com os dados codificados.
+
+### 6. 📝 **Cadastro de novos produtos**
+- Validação dos dados do novo produto
+- Integração com o backend
+
+### 7. 🛠 Testar Funcionalidade
+- **CEP**: Teste a busca automática do endereço ao inserir um CEP válido.
+- **Carrinho**: Adicione itens ao carrinho e finalize o pedido.
+- **WhatsApp**: Verifique se a URL do WhatsApp está sendo gerada corretamente ao finalizar o pedido.
