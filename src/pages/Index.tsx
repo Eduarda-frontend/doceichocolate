@@ -7,6 +7,8 @@ import CategoryFilter from '@/components/CategoryFilter';
 import { useCart } from '@/hooks/useCart';
 import { products, categories } from '@/data/products';
 import { useToast } from '@/hooks/use-toast';
+import { Search } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 
 const Index = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -26,6 +28,7 @@ const Index = () => {
     ? products 
     : products.filter(product => product.category === selectedCategory);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleAddToCart = (product: any) => {
     addToCart(product);
     toast({
@@ -49,6 +52,17 @@ const Index = () => {
       />
       
       <HeroSection />
+      
+          {/* Search bar */}
+          <div className="flex-1 max-w-md mx-4 pt-6 px-8">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input 
+                placeholder="O que você está procurando?"
+                className="pl-10 bg-muted/50 border-border focus:ring-primary"
+              />
+            </div>
+          </div>
       
       <main className="container mx-auto px-4 py-12">
         <section id="products">

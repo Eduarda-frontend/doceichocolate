@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Niconne&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +10,10 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    --texto-principal: "Lobster Two", serif;
+    --texto-secundario: "Roboto", 'sans-serif';
+    --texto-cursivo: "Niconne", 'cursive';
+
     --background: 350 25% 97%;
     --foreground: 340 15% 25%;
 

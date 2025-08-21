@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 
+import logo from '@/assets/logo.png'
+
 interface HeaderProps {
   cartItemsCount: number;
   onCartClick: () => void;
@@ -11,42 +13,12 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick }) => {
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
-      {/* Top bar */}
-      <div className="bg-gradient-sweet text-foreground py-2 px-4">
-        <div className="container mx-auto flex justify-between items-center text-sm">
-          <span>📍 Caldas Novas - GO</span>
-          <div className="flex items-center gap-4">
-            <span>Contato</span>
-            <span>Login</span>
-          </div>
-        </div>
-      </div>
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur bg-gradient-sweet supports-[backdrop-filter]:bg-background/60 border-b border-border">
+
       
       {/* Main header */}
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between gap-4">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-12 h-12 bg-gradient-hero rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-soft">
-              D&C
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-foreground">Doce & Chocolate</h1>
-              <p className="text-xs text-muted-foreground">Confeitaria Artesanal</p>
-            </div>
-          </div>
-
-          {/* Search bar */}
-          <div className="flex-1 max-w-md mx-4">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input 
-                placeholder="O que você está procurando?"
-                className="pl-10 bg-muted/50 border-border focus:ring-primary"
-              />
-            </div>
-          </div>
+      <div className="container mx-auto px-2 py-2">
+        <div className="flex items-center justify-end gap-4">
 
           {/* Actions */}
           <div className="flex items-center gap-3">
