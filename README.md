@@ -5,7 +5,7 @@
 
 O projeto **Doce & Chocolate** é uma aplicação web que exibe o cardápio de uma confeitaria, permitindo aos clientes visualizar produtos, realizar pedidos diretamente pela interface e finalizar a compra de maneira simples. O sistema também oferece funcionalidades como busca de endereço pelo CEP e envio do pedido via WhatsApp 📱.
 
-A aplicação é construída utilizando Angular e integrações com o **Tailwind** para o layout e componentes responsivos.
+A aplicação é construída utilizando React e integrações com o **Tailwind** para o layout e componentes responsivos.
 
 ### Protótipo no Figma
 [Acesse o protótipo](https://www.figma.com/design/nvMOS2rFI1Rw4oxQfUe0rC/e-Commerce?node-id=0-1&p=f&t=lNTr89jSK3KQORkK-0)
