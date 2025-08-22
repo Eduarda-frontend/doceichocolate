@@ -1,73 +1,53 @@
-# Welcome to your Lovable project
+# 🍫 **Doce & Chocolate** - Cardápio Online 🍰 
+### (Projeto em desenvolvimento)
 
-## Project info
+## 📜 Descrição
 
-**URL**: https://lovable.dev/projects/a670b074-ada8-4d80-8f4f-daa5ed68f636
+O projeto **Doce & Chocolate** é uma aplicação web que exibe o cardápio de uma confeitaria, permitindo aos clientes visualizar produtos, realizar pedidos diretamente pela interface e finalizar a compra de maneira simples. O sistema também oferece funcionalidades como busca de endereço pelo CEP e envio do pedido via WhatsApp 📱.
 
-## How can I edit this code?
+A aplicação é construída utilizando Angular e integrações com o **Tailwind** para o layout e componentes responsivos.
 
-There are several ways of editing your application.
+### Protótipo no Figma
+[Acesse o protótipo](https://www.figma.com/design/nvMOS2rFI1Rw4oxQfUe0rC/e-Commerce?node-id=0-1&p=f&t=lNTr89jSK3KQORkK-0)
 
-**Use Lovable**
+## ⚙️ Funcionalidades
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a670b074-ada8-4d80-8f4f-daa5ed68f636) and start prompting.
+- **Exibição de Produtos**: Os produtos são apresentados com imagens, descrições e preços, permitindo aos usuários escolher itens do cardápio.
+- **Carrinho de Compras 🛒**: Os itens adicionados são listados no carrinho e o usuário pode visualizar seu pedido antes de finalizar.
+- **Busca de Endereço via CEP 📍**: O endereço do usuário pode ser preenchido automaticamente a partir do CEP fornecido, utilizando a API do **ViaCEP**.
+- **Formulário de Pedido 📝**: O usuário preenche seus dados (nome, telefone, endereço) e escolhe a forma de pagamento 💳 antes de finalizar o pedido.
+- **Envio de Pedido via WhatsApp 📲**: O pedido é gerado em formato de mensagem e enviado automaticamente para o WhatsApp do estabelecimento, com todos os dados preenchidos.
 
-Changes made via Lovable will be committed automatically to this repo.
+- # 🚀 Como Funciona
 
-**Use your preferred IDE**
+### 1. 🍰 **Visualização dos Produtos**
+- Os produtos são exibidos nas categorias "Bentô Cake", "Bolos Decorados" e "Brigadeiro".
+- Cada produto tem uma imagem, título, descrição e preço.
+- O usuário pode adicionar os itens ao carrinho clicando no botão "Adicionar ao carrinho".
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 2. 🛒 **Carrinho de Compras**
+- Após adicionar um item ao carrinho, o botão "Finalizar Pedido" aparece na seção do carrinho.
+- O usuário pode visualizar os itens selecionados e clicar para finalizar o pedido.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 3.📍 **Busca de Endereço**
 
-Follow these steps:
+- O usuário pode inserir o **CEP** no campo apropriado, e o sistema preencherá automaticamente os campos de **endereço**, **bairro**, **cidade** e **estado** utilizando a API do ViaCEP.
+- O preenchimento é feito automaticamente ao clicar no botão de "Buscar CEP".
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 4. 📝 **Formulário de Pedido**
+- O formulário solicita o **nome**, **telefone**, **celular**, **endereço**, **bairro**, **complemento** e **forma de pagamento**.
+- O usuário pode escolher entre **dinheiro** ou **parcelamento**.
+- O botão de "Finalizar Pedido" gera uma mensagem com os dados do pedido e redireciona o usuário para o WhatsApp do estabelecimento.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 5. 📲 **Envio via WhatsApp**
+- Ao clicar no botão "Finalizar Pedido", o pedido é enviado para o WhatsApp com todos os dados preenchidos automaticamente.
+- A URL do WhatsApp é gerada dinamicamente com os dados codificados.
 
-# Step 3: Install the necessary dependencies.
-npm i
+### 6. 📝 **Cadastro de novos produtos**
+- Validação dos dados do novo produto
+- Integração com o backend
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/a670b074-ada8-4d80-8f4f-daa5ed68f636) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### 7. 🛠 Testar Funcionalidade
+- **CEP**: Teste a busca automática do endereço ao inserir um CEP válido.
+- **Carrinho**: Adicione itens ao carrinho e finalize o pedido.
+- **WhatsApp**: Verifique se a URL do WhatsApp está sendo gerada corretamente ao finalizar o pedido.
