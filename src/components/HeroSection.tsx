@@ -23,11 +23,11 @@ const HeroSection: React.FC = () => {
       
       {/* Content */}
 
-      <div className="absolute grid grid-cols-6 justify-between text-center w-full p-4 px-12 bg-white z-10 bottom-0 rounded-2xl">
+      <div className="absolute grid grid-cols-7 justify-between text-center w-full p-4 px-12 bg-white z-10 bottom-0 rounded-2xl">
 
         <img className="rounded-3xl w-[153px] " src={logo} alt="Logo Doce e Chocolate"/>
 
-        <div className="text-center col-span-2 col-end-5">
+        <div className="text-center col-span-3 col-end-6">
             <h1 className="text-7xl font-cursivo">Doce e Chocolate</h1>
             <ul className='flex justify-between pt-8 font-secundario'>
                 <li>

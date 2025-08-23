@@ -41,6 +41,9 @@ All colors MUST be HSL.
     --border: 345 15% 90%;
     --input: 345 15% 90%;
     --ring: 340 75% 55%;
+    
+    --yellow-sweet: 46, 64%, 52%;
+    --yellow-sweet-foreground: 0 0% 10%; 
 
     /* Sweet bakery design tokens */
     --pink-soft: 345 35% 92%;

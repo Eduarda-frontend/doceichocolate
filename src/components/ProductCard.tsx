@@ -22,18 +22,25 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
-    
+    const [open, setOpen] = useState(false);
+
   return (
-    <Dialog>
-			<DialogTrigger asChild>
         <Card className="group cursor-pointer overflow-hidden bg-gradient-card shadow-card hover:shadow-elegant transition-all duration-300 hover:scale-[1.02] border-border/50">
           
           <div className="relative overflow-hidden">
-            <img 
-              src={product.image} 
-              alt={product.name}
-              className="w-full h-48 object-cover"
-            />
+            <Dialog open={open} onOpenChange={setOpen}>
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-48 object-cover"
+                />
+                <DialogTrigger asChild>
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-white font-bold text-lg">Saiba mais</span>
+                  </div>
+                </DialogTrigger>
+                  <NotebookModal  onAddToCart={onAddToCart} product={product} closeModal={() => setOpen(false)}/>
+              </Dialog>
             {product.isNew && (
               <Badge className="absolute top-2 left-2 bg-primary text-primary-foreground">
                 Novo
@@ -71,9 +78,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
             </div>
           </CardContent>
         </Card>
-      </DialogTrigger>
-        <NotebookModal/>
-    </Dialog>
   );
 };
 

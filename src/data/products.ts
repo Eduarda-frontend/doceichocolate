@@ -1,6 +1,5 @@
 import { Product } from '@/components/ProductCard';
 
-// Using the uploaded image for bentô cakes since it matches perfectly
 import bentoImage from '@/assets/naked-cake-limao-siciliano-frutas-vermelhas.png';
 
 export const products: Product[] = [
