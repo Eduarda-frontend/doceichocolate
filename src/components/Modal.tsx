@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { X } from "lucide-react";
-import bentoCakeImage from "@/assets/hero-banner.jpg";
 import { productSections } from "@/data/ProductSection";
 import { Product } from "./ProductCard";
 import { formatPrice } from "@/lib/utils";
+import { Carousel, CarouselPrevious, CarouselNext, CarouselContent, CarouselItem } from "./ui/carousel";
 
 
 interface ProductOption {
@@ -38,10 +38,6 @@ export function NotebookModal({
 		setSelections((prev) => ({ ...prev, [section]: value }));
 	};
 
-	function handleAdd(product: Product): void {
-		throw new Error("Function not implemented.");
-	}
-
 	return (
 
 			<DialogContent className="max-w-[95vw] h-[70vh] p-0 border-0 shadow-none">
@@ -58,11 +54,21 @@ export function NotebookModal({
 						<div className="flex items-center w-1/2 p-5 center bg-notebook-left relative">
 							<div className="relative z-10 grid grid-cols-2 items-center">
 								<div className="px-2">
-									<img
-										src={product.image}
-										alt={product.name}
-										className="h-[60vh] object-cover rounded-lg shadow-lg"
-									/>
+									<Carousel className="h-full">
+									<CarouselPrevious />
+									<CarouselNext />
+									<CarouselContent className="flex h-full">
+										{product.image.map((img, index) => (
+										<CarouselItem key={index} className="h-full">
+											<img
+											src={img}
+											alt={`Imagem ${index + 1}`}
+											className="w-full h-[55vh] object-cover rounded-lg"
+											/>
+										</CarouselItem>
+										))}
+									</CarouselContent>
+									</Carousel>
 								</div>
 
 								<div className="px-2 h-full flex flex-col justify-between border rounded-md border-[hsl(var(--yellow-sweet))]">

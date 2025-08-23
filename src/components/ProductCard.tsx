@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Heart, Plus, ShoppingCart } from 'lucide-react';
+import { Heart, Plus } from 'lucide-react';
 import { NotebookModal } from './Modal';
 import { Dialog, DialogTrigger } from '@radix-ui/react-dialog';
 
@@ -11,7 +11,7 @@ export interface Product {
   name: string;
   description: string;
   price: number;
-  image: string;
+  image: string[];
   category: string;
   isNew?: boolean;
 }
@@ -29,7 +29,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
           
           <div className="relative overflow-hidden">
                 <img 
-                  src={product.image} 
+                  src={product.image[0]} 
                   alt={product.name}
                   className="w-full h-48 object-cover"
                 />
