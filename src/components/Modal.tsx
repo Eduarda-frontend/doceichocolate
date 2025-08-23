@@ -22,7 +22,7 @@ export interface ProductSection {
 }
 
 type NotebookModalProps = {
-    product: Product
+    product: Product;
     onAddToCart: (product: Product) => void;
 	closeModal: () => void
 }
@@ -37,6 +37,10 @@ export function NotebookModal({
 	const handleSelectionChange = (section: string, value: string) => {
 		setSelections((prev) => ({ ...prev, [section]: value }));
 	};
+
+	function handleAdd(product: Product): void {
+		throw new Error("Function not implemented.");
+	}
 
 	return (
 
@@ -88,6 +92,7 @@ export function NotebookModal({
 							</div>
 						</div>
 
+					
 						{/* Right Page - Options */}
 						<div className="w-1/2 p-5 bg-notebook-right bg-gradient-sweet relative overflow-y-auto">
 
@@ -162,13 +167,7 @@ export function NotebookModal({
 										<Button
 											variant="default"
 											className="flex-1 bg-[hsl(var(--yellow-sweet))]  hover:bg-[hsl(var(--yellow-sweet))]"
-											onClick={() => {
-												console.log(
-													"Seleções:",
-													selections
-												);
-												{onAddToCart}
-											}}
+											onClick={() => onAddToCart(product)}
 										>
 											Adicionar ao Carrinho
 										</Button>

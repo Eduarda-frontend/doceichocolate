@@ -28,19 +28,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
         <Card className="group cursor-pointer overflow-hidden bg-gradient-card shadow-card hover:shadow-elegant transition-all duration-300 hover:scale-[1.02] border-border/50">
           
           <div className="relative overflow-hidden">
-            <Dialog open={open} onOpenChange={setOpen}>
                 <img 
                   src={product.image} 
                   alt={product.name}
                   className="w-full h-48 object-cover"
                 />
-                <DialogTrigger asChild>
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="text-white font-bold text-lg">Saiba mais</span>
-                  </div>
-                </DialogTrigger>
-                  <NotebookModal  onAddToCart={onAddToCart} product={product} closeModal={() => setOpen(false)}/>
-              </Dialog>
             {product.isNew && (
               <Badge className="absolute top-2 left-2 bg-primary text-primary-foreground">
                 Novo
@@ -67,14 +59,21 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
               <span className="text-lg font-bold text-primary">
                 R$ {product.price.toFixed(2)}
               </span>
-              <Button 
-                size="sm"
-                onClick={() => onAddToCart(product)}
-                className="bg-gradient-hero hover:opacity-90 transition-opacity shadow-soft"
-              >
-                <Plus className="h-4 w-4 mr-1" />
-                Adicionar
-              </Button>
+              <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger asChild>
+
+                  <Button 
+                    size="sm"
+                    onClick={() => setOpen(true)}
+                    className="bg-gradient-hero hover:opacity-90 transition-opacity shadow-soft"
+                  >
+                    <Plus className="h-4 w-4 mr-1" />
+                    Adicionar
+                  </Button>
+
+                </DialogTrigger>
+                  <NotebookModal  onAddToCart={() => onAddToCart(product)} product={product} closeModal={() => setOpen(false)}/>
+              </Dialog>
             </div>
           </CardContent>
         </Card>
