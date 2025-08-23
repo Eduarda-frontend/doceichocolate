@@ -40,18 +40,18 @@ export function NotebookModal({
 
 	return (
 
-			<DialogContent className="max-w-[95vw] h-[70vh] p-0 border-0 shadow-none">
+			<DialogContent className=" lg:max-w-[95vw] lg:h-[70vh] p-0 border-0 shadow-none">
 				<div className="relative w-full h-full bg-gradient-to-r from-notebook-left via-notebook-left to-notebook-right rounded-2xl shadow-[var(--shadow-notebook)] overflow-hidden">
 					<button
 						onClick={closeModal}
-						className="absolute top-4 right-4 z-50 w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background/90 flex items-center justify-center transition-colors"
+						className="absolute lg:top-4 right-0 lg:right-4 z-50 w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background/90 flex items-center justify-center transition-colors"
 					>
 						<X className="h-4 w-4" />
 					</button>
 
-					<div className="flex h-full">
+					<div className="flex flex-col lg:flex-row h-full">
 						{/* Left Page - Product Info */}
-						<div className="flex items-center w-1/2 p-5 center bg-notebook-left relative">
+						<div className="flex flex-col lg:flex-row items-center h-1/2 lg:h-full lg:w-1/2 p-5 center bg-notebook-left relative">
 							<div className="relative z-10 grid grid-cols-2 items-center">
 								<div className="px-2">
 									<Carousel className="h-full">
@@ -63,7 +63,7 @@ export function NotebookModal({
 											<img
 											src={img}
 											alt={`Imagem ${index + 1}`}
-											className="w-full h-[55vh] object-cover rounded-lg"
+											className="w-full h-[40vh] lg:h-[55vh] object-cover rounded-lg"
 											/>
 										</CarouselItem>
 										))}
@@ -72,12 +72,12 @@ export function NotebookModal({
 								</div>
 
 								<div className="px-2 h-full flex flex-col justify-between border rounded-md border-[hsl(var(--yellow-sweet))]">
-									<h2 className="text-2xl font-bold text-foreground mb-4">
+									<h2 className="text-xl  lg:text-2xl font-bold text-foreground mb-4">
 										Descrição do produto
 									</h2>
 
 									<div className="space-y-4 text-foreground/80">
-										<h3 className="text-xl font-semibold text-primary">
+										<h3 className="text-lg lg:text-xl font-semibold text-primary">
 											{product.name}
 										</h3>
 
@@ -87,10 +87,10 @@ export function NotebookModal({
 
 									</div>
 									<div className="my-4">
-										<p className="text-2xl font-bold text-primary">
+										<p className="text-xl  lg:text-2xl font-bold text-primary">
 										{formatPrice(product.price)}
 										</p>
-										<p className="text-sm text-muted-foreground">
+										<p className="text-xs lg:text-sm text-muted-foreground">
 										Preço base
 										</p>
 									</div>
@@ -100,7 +100,7 @@ export function NotebookModal({
 
 					
 						{/* Right Page - Options */}
-						<div className="w-1/2 p-5 bg-notebook-right bg-gradient-sweet relative overflow-y-auto">
+						<div className=" h-1/2 lg:h-full lg:w-1/2 p-5 bg-notebook-right bg-gradient-sweet relative overflow-y-auto">
 
 							<div className="relative z-10 space-y-6">
 								<h2 className="text-2xl pt-3 font-bold text-foreground mb-6">

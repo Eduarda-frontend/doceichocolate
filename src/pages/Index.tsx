@@ -43,7 +43,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-w-[517px] bg-background">
       <Header 
         cartItemsCount={getTotalItems()} 
         onCartClick={() => setIsCartOpen(true)}

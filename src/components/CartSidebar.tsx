@@ -2,7 +2,6 @@ import React from 'react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 import { Minus, Plus, Trash2, MessageCircle } from 'lucide-react';
 import { Product } from './ProductCard';
 
@@ -62,7 +61,7 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
                 {cartItems.map((item) => (
                   <div key={item.id} className="flex gap-3 p-3 border border-border rounded-lg bg-card">
                     <img 
-                      src={item.image} 
+                      src={item.image[0]} 
                       alt={item.name}
                       className="w-16 h-16 object-cover rounded-lg"
                     />

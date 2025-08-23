@@ -23,12 +23,12 @@ const HeroSection: React.FC = () => {
       
       {/* Content */}
 
-      <div className="absolute grid grid-cols-7 justify-between text-center w-full p-4 px-12 bg-white z-10 bottom-0 rounded-2xl">
+      <div className="absolute grid grid-cols-8 lg:grid-cols-7 justify-between text-center w-full p-4 px-12 bg-white z-10 bottom-0 rounded-2xl">
 
-        <img className="rounded-3xl w-[153px] " src={logo} alt="Logo Doce e Chocolate"/>
+        <img className="rounded-3xl max-w-[153px] lg:w-[153px] " src={logo} alt="Logo Doce e Chocolate"/>
 
-        <div className="text-center col-span-3 col-end-6">
-            <h1 className="text-7xl font-cursivo">Doce e Chocolate</h1>
+        <div className="text-center col-span-4 lg:col-span-3 col-end-7   lg:col-end-6">
+            <h1 className="text-6xl lg:text-7xl font-cursivo">Doce e Chocolate</h1>
             <ul className='flex justify-between pt-8 font-secundario'>
                 <li>
                     <p className="m-0 flex">
@@ -44,31 +44,6 @@ const HeroSection: React.FC = () => {
         </div>
         <div></div>
       </div>
-
-      {/* <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-          Doces que Encantam
-        </h1>
-        <p className="text-xl md:text-2xl mb-8 opacity-90">
-          Bentô Cakes artesanais feitos com amor e os melhores ingredientes
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button 
-            size="lg"
-            onClick={scrollToProducts}
-            className="bg-white text-primary hover:bg-white/90 shadow-soft"
-          >
-            Ver Produtos
-          </Button>
-          <Button 
-            size="lg"
-            variant="outline"
-            className="border-white text-white hover:bg-white hover:text-primary"
-          >
-            Sobre Nós
-          </Button>
-        </div>
-      </div> */}
       
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
