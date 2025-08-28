@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Niconne&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --texto-principal: "Lobster Two", serif;
+    --texto-secundario: "Roboto", 'sans-serif';
+    --texto-cursivo: "Niconne", 'cursive';
+
+    --background: 350 25% 97%;
+    --foreground: 340 15% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 340 15% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 340 15% 25%;
+
+    --primary: 340 75% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 345 35% 92%;
+    --secondary-foreground: 340 15% 25%;
+
+    --muted: 345 20% 95%;
+    --muted-foreground: 340 8% 50%;
+
+    --accent: 330 50% 85%;
+    --accent-foreground: 340 15% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 345 15% 90%;
+    --input: 345 15% 90%;
+    --ring: 340 75% 55%;
+    
+    --yellow-sweet: 46, 64%, 52%;
+    --yellow-sweet-foreground: 0 0% 10%; 
+
+    /* Sweet bakery design tokens */
+    --pink-soft: 345 35% 92%;
+    --pink-medium: 340 45% 75%;
+    --pink-vibrant: 340 75% 55%;
+    --pink-deep: 335 55% 45%;
+    
+    --gradient-sweet: linear-gradient(135deg, hsl(var(--pink-soft)), hsl(var(--pink-medium)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--pink-deep)));
+    
+    --shadow-soft: 0 4px 20px -4px hsl(var(--primary) / 0.15);
+    --shadow-card: 0 2px 12px -2px hsl(var(--primary) / 0.1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 340 25% 8%;
+    --foreground: 345 35% 92%;
+
+    --card: 340 20% 12%;
+    --card-foreground: 345 35% 92%;
+
+    --popover: 340 20% 12%;
+    --popover-foreground: 345 35% 92%;
+
+    --primary: 340 75% 65%;
+    --primary-foreground: 340 25% 8%;
+
+    --secondary: 340 15% 18%;
+    --secondary-foreground: 345 35% 92%;
+
+    --muted: 340 15% 18%;
+    --muted-foreground: 340 8% 65%;
+
+    --accent: 340 15% 18%;
+    --accent-foreground: 345 35% 92%;
+
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 345 35% 92%;
+
+    --border: 340 15% 18%;
+    --input: 340 15% 18%;
+    --ring: 340 75% 65%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

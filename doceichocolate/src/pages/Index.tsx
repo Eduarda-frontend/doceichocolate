@@ -1,7 +1,9 @@
+import Header from "../components/Header";
+
 const Index = () => {
 
   return (
-   <h1>Inicio</h1>
+   <Header/>
   );
 };
 
