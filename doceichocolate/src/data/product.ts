@@ -4,7 +4,7 @@ import bolo from '@/assets/bolo.png';
 import boloTopo from '@/assets/bolo-topo.png';
 
 
-export const products = [
+export const product = [
   {
     id: '1',
     name: '1 bentô cake e 3 docinhos',
