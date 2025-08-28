@@ -1,9 +1,13 @@
-import Header from "../components/Header";
+import Header from "@/components/Header";
+import HeroSection from "@/components/HeroSection";
 
 const Index = () => {
 
   return (
-   <Header/>
+    <div className="min-w-[517px] bg-background">
+         <Header/>
+         <HeroSection/>
+    </div>
   );
 };
 
