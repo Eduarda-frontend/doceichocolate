@@ -1,8 +1,9 @@
-import { IoCloseOutline } from "react-icons/io5";
+
 import type { Product } from "./ProductCart";
 import { formatPrice } from "@/lib/utils";
 import { productSections } from "@/data/productsSection";
 import { Button } from "./ui/button";
+import { Modal } from "./ui/modal";
 
 interface ProductOption {
 	id: string;
@@ -20,63 +21,51 @@ type notebookModalProps = {
 	closeModal: () => void;
 };
 
-const NotebookModal = ({ closeModal, product }: notebookModalProps) => {
+const NotebookModal = ({ product, closeModal }: notebookModalProps) => {
 	return (
-		<div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50">
-			<div className="lg:max-w-[95vw] lg:h-[70vh] p-0 border-0 shadow-none ">
-				<div className=" relative w-full h-full rounded-2xl overflow-hidden">
-					{/* Botão de fechar */}
-					<button
-						onClick={closeModal}
-						className="absolute lg:top-4 right-0 lg:right-4 z-50 w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background/90 flex items-center justify-center transition-colors"
-					>
-						<IoCloseOutline size={20} />
-					</button>
+			<Modal  closeModal={closeModal} size="lg">
+			<div className="flex flex-col lg:flex-row h-full">
+		 				{/* Left Page - Product Info */}
+		 				<div className="flex flex-col lg:flex-row items-center h-1/2 lg:h-full lg:w-1/2 p-5 center bg-white relative">
+		 					<div className="relative z-10 grid grid-cols-2 items-center">
+		 						<div className="px-2"></div>
 
-					{/* Conteúdo */}
+		 						<div className="px-2 h-full flex flex-col justify-between border rounded-md border-[hsl(var(--yellow-sweet))]">
+		 							<h2 className="text-xl  lg:text-2xl font-bold text-foreground mb-4">
+		 								Descrição do produto
+		 							</h2>
 
-					<div className="flex flex-col lg:flex-row h-full">
-						{/* Left Page - Product Info */}
-						<div className="flex flex-col lg:flex-row items-center h-1/2 lg:h-full lg:w-1/2 p-5 center bg-white relative">
-							<div className="relative z-10 grid grid-cols-2 items-center">
-								<div className="px-2"></div>
+		 							<div className="space-y-4 text-foreground/80">
+		 								<h3 className="text-lg lg:text-xl font-semibold text-primary">
+		 									{product.name}
+		 								</h3>
 
-								<div className="px-2 h-full flex flex-col justify-between border rounded-md border-[hsl(var(--yellow-sweet))]">
-									<h2 className="text-xl  lg:text-2xl font-bold text-foreground mb-4">
-										Descrição do produto
-									</h2>
+		 								<p className="text-sm leading-relaxed">
+		 									{product.description}
+		 								</p>
 
-									<div className="space-y-4 text-foreground/80">
-										<h3 className="text-lg lg:text-xl font-semibold text-primary">
-											{product.name}
-										</h3>
+		 							</div>
+		 							<div className="my-4">
+		 								<p className="text-xl  lg:text-2xl font-bold text-primary">
+		 								{formatPrice(product.price)}
+		 								</p>
+		 								<p className="text-xs lg:text-sm text-muted-foreground">
+		 								Preço base
+		 								</p>
+		 							</div>
+		 						</div>
+		 					</div>
+		 				</div>
 
-										<p className="text-sm leading-relaxed">
-											{product.description}
-										</p>
+		 				{/* Right Page - Options */}
+		 				<div className=" h-1/2 lg:h-full lg:w-1/2 p-5 bg-notebook-right bg-gradient-sweet relative overflow-y-auto">
+		 					<div className="relative z-10 space-y-6">
+		 						<h2 className="text-2xl pt-3 font-bold text-foreground mb-6">
+		 							Personalize seu pedido
+		 						</h2>
 
-									</div>
-									<div className="my-4">
-										<p className="text-xl  lg:text-2xl font-bold text-primary">
-										{formatPrice(product.price)}
-										</p>
-										<p className="text-xs lg:text-sm text-muted-foreground">
-										Preço base
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						{/* Right Page - Options */}
-						<div className=" h-1/2 lg:h-full lg:w-1/2 p-5 bg-notebook-right bg-gradient-sweet relative overflow-y-auto">
-							<div className="relative z-10 space-y-6">
-								<h2 className="text-2xl pt-3 font-bold text-foreground mb-6">
-									Personalize seu pedido
-								</h2>
-
-								<div>
-									{productSections.map((section) => (
+		 						<div>
+		 							{productSections.map((section) => (
 										<div
 											key={section.title}
 											className="space-y-3"
@@ -132,17 +121,17 @@ const NotebookModal = ({ closeModal, product }: notebookModalProps) => {
 								<div className="pt-6">
 									<div className="flex gap-3">
 										<Button
-                                            variant="secondary"
-                                            size="md"
+		                                    variant="secondary"
+		                                    size="md"
 											onClick={closeModal}
 											className="flex-1 border-[hsl(var(--yellow-sweet))] text-foreground hover:bg-[hsl(var(--yellow-sweet))] hover:text-primary-foreground"
 										>
 											Cancelar
 										</Button>
-										<Button 
-                                            variant="default"
-                                            size="md"
-                                            className="flex-1 bg-[hsl(var(--yellow-sweet))] hover:bg-[hsl(var(--yellow-sweet))]">
+										<Button
+		                                    variant="default"
+		                                    size="md"
+		                                    className="flex-1 bg-[hsl(var(--yellow-sweet))] hover:bg-[hsl(var(--yellow-sweet))]">
 											Adicionar ao Carrinho
 										</Button>
 									</div>
@@ -150,9 +139,7 @@ const NotebookModal = ({ closeModal, product }: notebookModalProps) => {
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
+			</Modal>
 	);
 };
 
