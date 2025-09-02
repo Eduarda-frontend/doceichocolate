@@ -3,6 +3,7 @@ import { formatPrice } from "@/lib/utils";
 import { productSections } from "@/data/productsSection";
 import { Button } from "./ui/button";
 import { Modal } from "./ui/modal";
+import { Carousel } from "./ui/carousel";
 
 interface ProductOption {
 	id: string;
@@ -27,7 +28,15 @@ const NotebookModal = ({ product, closeModal }: notebookModalProps) => {
 				{/* Left Page - Product Info */}
 				<div className="flex flex-col lg:flex-row items-center h-1/2 lg:h-full lg:w-1/2 p-5 center bg-white relative">
 					<div className="relative z-10 grid grid-cols-2 items-center">
-						<div className="px-2"></div>
+						<div className="px-2">
+							<Carousel autoPlay interval={3000} showIndicators showArrows >
+								{product.image.map((image, index) => (
+									<div key={index}>
+										<img src={image} alt={product.name} />
+									</div>
+								))}
+							</Carousel>
+						</div>
 
 						<div className="px-2 h-full flex flex-col justify-between border rounded-md border-[hsl(var(--yellow-sweet))]">
 							<h2 className="text-xl  lg:text-2xl font-bold text-foreground mb-4">
@@ -56,7 +65,7 @@ const NotebookModal = ({ product, closeModal }: notebookModalProps) => {
 				</div>
 
 				{/* Right Page - Options */}
-				<div className=" h-1/2 lg:h-full lg:w-1/2 p-5 bg-notebook-right bg-gradient-sweet relative overflow-y-auto">
+				<div className=" h-1/2 lg:h-auto lg:w-1/2 p-5 bg-gradient-sweet relative overflow-y-auto">
 					<div className="relative z-10 space-y-6">
 						<h2 className="text-2xl pt-3 font-bold text-foreground mb-6">
 							Personalize seu pedido

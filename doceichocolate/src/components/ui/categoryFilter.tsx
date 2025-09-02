@@ -6,11 +6,11 @@ interface CategoryFilterProps {
 	onCategoryChange: (category: string) => void;
 }
 
-const CategoryFilter = ({
+export function CategoryFilter({
 	categories,
 	selectedCategory,
 	onCategoryChange,
-}: CategoryFilterProps) => {
+}: CategoryFilterProps) {
 	return (
 		<div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
 			<Button
@@ -33,6 +33,4 @@ const CategoryFilter = ({
 			))}
 		</div>
 	);
-};
-
-export default CategoryFilter;
+}
