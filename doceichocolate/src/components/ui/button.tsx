@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 
 type ButtonProps = {
-variant: 'default'| 'secondary'| 'outline'| 'ghost'
+variant: 'default'| 'secondary'| 'outline'| 'ghost' | 'yellow'
 size: 'sm' | 'md' | 'lg' | 'default' | 'icon'
 children: React.ReactNode
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
@@ -17,6 +17,7 @@ const variants = {
       "bg-secondary text-secondary-foreground hover:bg-secondary/80",
     ghost: "hover:bg-accent hover:text-accent-foreground",
     link: "text-primary underline-offset-4 hover:underline",
+    yellow: " text-primary-foreground hover:bg-[hsl(var(--yellow-sweet))]",
 }
 
 const sizes = {
@@ -30,7 +31,7 @@ const sizes = {
 return(
     <button
         className={cn(
-        "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+        "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
         variants[variant],
         sizes[size],
         className
