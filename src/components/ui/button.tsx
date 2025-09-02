@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 
 type ButtonProps = {
-variant: 'default'| 'secondary'| 'outline'| 'ghost' | 'yellow'
+variant: 'default'| 'secondary'| 'outline'| 'ghost' | 'yellow' | 'link'
 size: 'sm' | 'md' | 'lg' | 'default' | 'icon'
 children: React.ReactNode
 } & React.ButtonHTMLAttributes<HTMLButtonElement>

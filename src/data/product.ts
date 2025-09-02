@@ -1,8 +1,5 @@
-
-
 import bolo from '@/assets/bolo.png';
 import boloTopo from '@/assets/bolo-topo.png';
-
 
 export const product = [
   {
