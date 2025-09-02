@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ProductCard from "@/components/ProductCart";
-import CategoryFilter from "@/components/ui/CategoryFilter";
+import CategoryFilter from "@/components/ui/categoryFilter";
 import { categories, product } from "@/data/product";
 import { useState } from "react";
 
