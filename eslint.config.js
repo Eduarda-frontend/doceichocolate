@@ -19,5 +19,9 @@ export default tseslint.config([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      // Desativa a regra que exige importar React em JSX
+      'react/react-in-jsx-scope': 'off',
+    },
   },
 ])
