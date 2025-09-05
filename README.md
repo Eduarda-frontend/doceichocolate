@@ -54,18 +54,39 @@ A aplicação é construída utilizando React e integrações com o **Tailwind**
 - **Carrinho**: Adicione itens ao carrinho e finalize o pedido.
 - **WhatsApp**: Verifique se a URL do WhatsApp está sendo gerada corretamente ao finalizar o pedido.
 
-### 8. 🔒 Componente Private
+## 🔒 Componente Private
 
 O componente Private é utilizado para proteger rotas que só podem ser acessadas por usuários autenticados. Ele integra com o Firebase Authentication para verificar em tempo real se há um usuário logado.
 
 #### Funcionamento
 
-- O componente verifica o estado de autenticação do usuário via onAuthStateChanged.
+- O componente verifica o estado de autenticação do usuário via * `onAuthStateChanged`.
 
-- Caso o usuário esteja logado, seus dados básicos (uid e email) são armazenados no localStorage.
+- Caso o usuário esteja logado, seus dados básicos (`uid` e `email`) são armazenados no `localStorage`.
 
 - Se não houver autenticação, o usuário é redirecionado automaticamente para a tela de login.
 
-- Enquanto a verificação acontece, o texto "Carregando..." é exibido.
+- Enquanto a verificação acontece, o texto `"Carregando..."` é exibido.
 
-- Se o usuário estiver autenticado, o conteúdo da rota protegida (children) é renderizado normalmente.
+- Se o usuário estiver autenticado, o conteúdo da rota protegida (`children`) é renderizado normalmente.
+
+```
+import { Private } from "@/routes/Private";
+import { Dashboard } from "@/pages/Dashboard";
+
+export function AppRoutes() {
+  return (
+    <Routes>
+      <Route
+        path="/dashboard"
+        element={
+          <Private>
+            <Dashboard />
+          </Private>
+        }
+      />
+    </Routes>
+  );
+}
+
+```
