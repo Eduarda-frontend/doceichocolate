@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils"
 type ButtonProps = {
 variant: 'default'| 'secondary'| 'outline'| 'ghost' | 'yellow' | 'link'
 size: 'sm' | 'md' | 'lg' | 'default' | 'icon'
-children: React.ReactNode
+children?: React.ReactNode
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export function Button ( { variant, size, children, className, ...props }:ButtonProps ) {
