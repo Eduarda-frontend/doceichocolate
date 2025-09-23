@@ -1,10 +1,12 @@
 import { FiShoppingCart, FiUser, FiHeart } from "react-icons/fi";
 import { Button } from "./ui/button";
-import { useState } from "react";
-import { CartSidebar } from "./ui/cartSidebar";
+import { useContext, useState } from "react";
+import { CartSidebar } from "./cartSidebar";
+import { CartContext } from '../contexts/cartContext'
 
 const Header = () => {
   const [cartOpen, setCartOpen] = useState(false);
+  const { cartAmount } = useContext(CartContext)
 
 	return (
 		<header className="sticky top-0 z-50  bg-gradient-sweet border-b border-border">
@@ -30,6 +32,9 @@ const Header = () => {
             className="relative"
             onClick={() => setCartOpen(true)}>
 						<FiShoppingCart className="w-6 h-6" />
+            {cartAmount > 0 && (
+              <span> {cartAmount} </span>
+            )}
 					</Button>
 				</div>
         <CartSidebar isOpen={cartOpen} closeOffCanvas={() => setCartOpen(false)}/>

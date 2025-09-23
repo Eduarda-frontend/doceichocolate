@@ -1,9 +1,15 @@
-import type { Product } from "./ProductCart";
-import { formatPrice } from "@/lib/utils";
-import { productSections } from "@/data/productsSection";
+import { useContext } from "react";
+
+import { Carousel } from "./ui/carousel";
 import { Button } from "./ui/button";
 import { Modal } from "./ui/modal";
-import { Carousel } from "./ui/carousel";
+
+import { formatPrice } from "@/lib/utils";
+
+import type { Product } from "./ProductCart";
+import { productSections } from "@/data/productsSection";
+
+import { CartContext } from "@/contexts/cartContext";
 
 interface ProductOption {
 	id: string;
@@ -21,7 +27,14 @@ type notebookModalProps = {
 	closeModal: () => void;
 };
 
+
 const NotebookModal = ({ product, closeModal }: notebookModalProps) => {
+	const { addItemCart } = useContext(CartContext)
+
+	function handleAddCartItem(product: Product) {
+		addItemCart(product)
+	}
+
 	return (
 		<Modal closeModal={closeModal} size="lg">
 			<div className="flex flex-col lg:flex-row h-full">
@@ -123,6 +136,7 @@ const NotebookModal = ({ product, closeModal }: notebookModalProps) => {
 									Cancelar
 								</Button>
 								<Button
+									onClick={() => handleAddCartItem(product)}
 									variant="yellow"
 									size="md"
 									className="flex-1 bg-[hsl(var(--yellow-sweet))]"

@@ -4,17 +4,17 @@ export const productSections: ProductSection[] = [
   {
     title: "Massa",
     options: [
-      { id: "chocolate", label: "Chocolate", price: "" },
-      { id: "baunilha", label: "Baunilha", price: "" },
-      { id: "red-velvet", label: "Red Velvet", price: "" },
+      { id: "chocolate", label: "Chocolate"},
+      { id: "baunilha", label: "Baunilha"},
+      { id: "red-velvet", label: "Red Velvet"},
     ],
   },
     {
 		title: "Recheio do Bentô Cake",
 		options: [
-			{ id: "brigadeiro", label: "Brigadeiro", price: "" },
-			{ id: "beijinho", label: "Beijinho", price: "" },
-			{ id: "doce-leite", label: "Doce de Leite", price: "" },
+			{ id: "brigadeiro", label: "Brigadeiro"},
+			{ id: "beijinho", label: "Beijinho"},
+			{ id: "doce-leite", label: "Doce de Leite"},
 		],
 	}
 ];
