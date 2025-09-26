@@ -1,42 +1,39 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { useState } from "react";
 
-import { auth } from "@/services/firebaseConnection";
-import { signInWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "@/services/firebaseConnection";
+// import { signInWithEmailAndPassword } from "firebase/auth";
 
-import { Formulario } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import logo from "@/assets/logo.png";
 
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+import { z } from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Formulario } from "@/components/ui/form";
+
+const schema = z.object({
+	email: z.string().email("Insira um email válido").nonempty("O campo email é obrigatório"),
+	password: z.string().nonempty("O campo senha é obrigatório")
+})
+
+type FormData = z.infer<typeof schema>
 
 const Login = () => {
-	const [email, setEmail] = useState("");
-	const [password, setpassword] = useState("");
 	const [visualizaSenha, SetVisualizaSenha] = useState(false);
-	const navigate = useNavigate();
+	const { register, handleSubmit, formState: { errors } }  = useForm<FormData>({
+		resolver: zodResolver(schema),
+		mode: "onChange"
+	})
 
-	function handleLogin(data: Record<string, FormDataEntryValue>) {
-		console.log("Login:", data )
-
-		if(email === '' || password === ''){
-			alert('Preencha todos os campos')
-		}
-
-		signInWithEmailAndPassword(auth, email, password)
-		.then(() => {
-			console.log("Logado com sucesso.")
-			navigate("/", {replace: true})
-		})
-		.catch((error) => {
-			console.log("Erro ao fazer o login:")
-			console.log(error)
-		})
+	function onSubmit(data: FormData){
+		console.log(data)
 	}
 
 	return (
-		<div className="min-h-screen flex items-center justify-center relative overflow-hidden p-6">
+		<div className="min-h-screen flex items-center justify-center relative overflow-hidden p-6  bg-gradient-sweet border-b border-border">
 			{/* Login Form */}
 			<div className="relative z-10 w-full max-w-lg mx-4">
 				<div className="m-auto mt-20 bg-card/95 p-5 backdrop-blur-sm shadow-sweet border rounded-lg">
@@ -53,7 +50,7 @@ const Login = () => {
 					</div>
 
 					<div className="space-y-6">
-						<Formulario onSubmit={handleLogin}>
+						<Formulario onSubmit={handleSubmit(onSubmit)}>
 							<div className="space-y-2 pt-5">
 								<label
 									htmlFor="email"
@@ -63,14 +60,11 @@ const Login = () => {
 								</label>
 								<div>
 									<Input
-										id="email"
 										type="email"
-										value={email}
-										onChange={(e) =>
-											setEmail(e.target.value)
-										}
+										name="email"
 										placeholder="seu@email.com"
-										required
+										error={errors.email?.message}
+										register={register}
 									/>
 								</div>
 							</div>
@@ -84,16 +78,11 @@ const Login = () => {
 								</label>
 								<div className="relative">
 									<Input
-										id="password"
-										type={
-											visualizaSenha ? "text" : "password"
-										}
+										type={visualizaSenha ? "text" : "password"}
+										name="password"
 										placeholder="••••••••"
-										value={password}
-										onChange={(e) =>
-											setpassword(e.target.value)
-										}
-										required
+										error={errors.password?.message}
+										register={register}
 									/>
 									<button
 										type="button"
@@ -134,7 +123,7 @@ const Login = () => {
 								variant="default"
 								className="w-full h-12 text-lg"
 							>
-								Entrar
+								Acessar
 							</Button>
 						</Formulario>
 
