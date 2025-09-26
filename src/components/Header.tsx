@@ -21,6 +21,7 @@ const Header = () => {
 						variant="ghost"
 						size="md"
 						className="hidden md:flex"
+						to="/login"
 					>
 						<FiUser className="w-6 h-6" />
 					</Button>

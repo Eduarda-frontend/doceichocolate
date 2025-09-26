@@ -2,14 +2,12 @@ import type { FormEvent, ReactNode } from "react";
 
 type FormularioProps = {
 	children: ReactNode;
-    onSubmit: (data: Record<string, FormDataEntryValue>) => void;
+    onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 };
 
-export function Formulario({ children, onSubmit }: FormularioProps) {
+export function Formulario({ children }: FormularioProps) {
 	function handleSubmit(e: FormEvent<HTMLFormElement>) {
 		e.preventDefault();
-		const data = Object.fromEntries(new FormData(e.currentTarget));
-		onSubmit(data);
 	}
 	return (
 		<form onSubmit={handleSubmit} className="space-y-4">
