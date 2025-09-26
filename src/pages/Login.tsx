@@ -1,39 +1,42 @@
-// import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-// import { auth } from "@/services/firebaseConnection";
-// import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/services/firebaseConnection";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
+import { Formulario } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import logo from "@/assets/logo.png";
 
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
-import { z } from 'zod';
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Formulario } from "@/components/ui/form";
-
-const schema = z.object({
-	email: z.string().email("Insira um email válido").nonempty("O campo email é obrigatório"),
-	password: z.string().nonempty("O campo senha é obrigatório")
-})
-
-type FormData = z.infer<typeof schema>
 
 const Login = () => {
+	const [email, setEmail] = useState("");
+	const [password, setpassword] = useState("");
 	const [visualizaSenha, SetVisualizaSenha] = useState(false);
-	const { register, handleSubmit, formState: { errors } }  = useForm<FormData>({
-		resolver: zodResolver(schema),
-		mode: "onChange"
-	})
+	const navigate = useNavigate();
 
-	function onSubmit(data: FormData){
-		console.log(data)
+	function handleLogin(data: Record<string, FormDataEntryValue>) {
+		console.log("Login:", data )
+
+		if(email === '' || password === ''){
+			alert('Preencha todos os campos')
+		}
+
+		signInWithEmailAndPassword(auth, email, password)
+		.then(() => {
+			console.log("Logado com sucesso.")
+			navigate("/", {replace: true})
+		})
+		.catch((error) => {
+			console.log("Erro ao fazer o login:")
+			console.log(error)
+		})
 	}
 
 	return (
-		<div className="min-h-screen flex items-center justify-center relative overflow-hidden p-6  bg-gradient-sweet border-b border-border">
+		<div className="min-h-screen flex items-center justify-center relative overflow-hidden p-6">
 			{/* Login Form */}
 			<div className="relative z-10 w-full max-w-lg mx-4">
 				<div className="m-auto mt-20 bg-card/95 p-5 backdrop-blur-sm shadow-sweet border rounded-lg">
@@ -50,7 +53,7 @@ const Login = () => {
 					</div>
 
 					<div className="space-y-6">
-						<Formulario onSubmit={handleSubmit(onSubmit)}>
+						<Formulario onSubmit={handleLogin}>
 							<div className="space-y-2 pt-5">
 								<label
 									htmlFor="email"
@@ -60,11 +63,14 @@ const Login = () => {
 								</label>
 								<div>
 									<Input
+										id="email"
 										type="email"
-										name="email"
+										value={email}
+										onChange={(e) =>
+											setEmail(e.target.value)
+										}
 										placeholder="seu@email.com"
-										error={errors.email?.message}
-										register={register}
+										required
 									/>
 								</div>
 							</div>
@@ -78,11 +84,16 @@ const Login = () => {
 								</label>
 								<div className="relative">
 									<Input
-										type={visualizaSenha ? "text" : "password"}
-										name="password"
+										id="password"
+										type={
+											visualizaSenha ? "text" : "password"
+										}
 										placeholder="••••••••"
-										error={errors.password?.message}
-										register={register}
+										value={password}
+										onChange={(e) =>
+											setpassword(e.target.value)
+										}
+										required
 									/>
 									<button
 										type="button"
@@ -100,30 +111,13 @@ const Login = () => {
 								</div>
 							</div>
 
-							<div className="flex items-center justify-between text-sm">
-								<label className="flex items-center space-x-2 cursor-pointer">
-									<input
-										type="checkbox"
-										className="rounded border-border accent-primary"
-									/>
-									<span className="text-muted-foreground">
-										Lembrar de mim
-									</span>
-								</label>
-								<a
-									href="#"
-									className="text-primary hover:underline font-medium"
-								>
-									Esqueceu a senha?
-								</a>
-							</div>
 							<Button
 								type="submit"
 								size="lg"
 								variant="default"
 								className="w-full h-12 text-lg"
 							>
-								Acessar
+								Entrar
 							</Button>
 						</Formulario>
 
