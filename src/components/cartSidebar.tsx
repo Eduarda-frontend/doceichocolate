@@ -2,7 +2,7 @@ import { useContext, type ReactNode } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { cn, formatPrice } from "@/lib/utils";
 import { CartContext } from "@/contexts/cartContext";
-import { BsTrash3, BsPencilSquare, BsCart4 } from "react-icons/bs";
+import { BsTrash3, BsCart4 } from "react-icons/bs";
 
 type CartSidebarProps = {
 	children?: ReactNode;
