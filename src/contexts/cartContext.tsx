@@ -1,5 +1,6 @@
 import type { Product } from "@/components/ProductCart";
 import { createContext, useEffect, useState, type ReactNode } from "react";
+import { IoTennisball } from "react-icons/io5";
 
 interface CartContextData {
     cart: CartProps[];
