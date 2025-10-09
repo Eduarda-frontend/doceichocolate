@@ -38,6 +38,7 @@ export function CartSidebar({
 			>
 				{/* Botão de fechar */}
 				<button
+					aria-label="Fechar carrinho"
 					onClick={closeOffCanvas}
 					className="absolute top-4 right-4 z-50 w-8 h-8 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background/90 flex items-center justify-center transition-colors"
 				>
@@ -50,7 +51,55 @@ export function CartSidebar({
 						<p className=" items-center gap-2 text-lg font-semibold text-foreground">Carrinho de Compras</p>
 					</div>
 					<div className="items-center justify-center text-center">
-						{cart.length === 0 && (
+						{cart.length > 0 ? (
+							<>
+								{cart.map((item) => (
+									<div key={item.id} className="grid grid-cols-7 gap-2 pt-5 border-b-2">
+
+										<div className="col-span-2 relative overflow-hidden justify-items-center">
+											<img
+												src={item.image[0]}
+												alt={item.name}
+												className="object-cover rounded-sm"
+												loading="lazy"
+											/>
+										</div>
+
+										<div className="col-span-4">
+											<h3 className="font-semibold text-card-foreground mb-1">
+												{item.name}
+											</h3>
+											<div className="text-start pt-2">
+												{item.selections && Object.entries(item.selections).map(([section, option]) => (
+													<p key={section}>
+														{section}: {option}
+													</p>
+												))}
+											</div>
+											<div className="text-end">
+												<p>Quandidade: {item.amount}</p>
+												<span className="text-md font-bold text-primary pt-3">
+													{formatPrice(item.price)}
+												</span>
+											</div>
+										</div>
+										<button
+											className=" flex items-center justify-center w-full h-full rounded hover:bg-red-300 hover:text-white"
+											onClick={() => removeItemCart(item)}>
+											<BsTrash3 size={20} />
+										</button>
+									</div>
+
+								))}
+
+								{/* Valor total */}
+								<p className="pt-6 text-end">
+									<span className="font-semibold text-card-foreground">Valor total: </span>
+									{formatPrice(total)}
+								</p>
+							</>
+
+						) : (
 							<>
 								<div className="mt-56 w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
 									<BsCart4 size={100} />
@@ -64,57 +113,6 @@ export function CartSidebar({
 							</>
 
 						)}
-						{cart.map((item) => (
-							<>
-								<div className="grid grid-cols-5 gap-2 pt-5 border-b-2">
-
-									<div className="relative overflow-hidden justify-items-center">
-										<img
-											src={item.image[0]}
-											alt={item.name}
-											className="object-cover rounded-sm"
-										/>
-									</div>
-
-									<div className="col-span-3">
-										<h3 className="font-semibold text-card-foreground mb-1">
-											{item.name}
-										</h3>
-										<div className="text-start pt-2">
-											conteudo selecionado
-										</div>
-										<div className="text-end">
-											<p>Quandidade: {item.amount}</p>
-											<span className="text-md font-bold text-primary pt-3">
-												{formatPrice(item.price)}
-											</span>
-										</div>
-									</div>
-									<div className="grid grid-cols-2 ">
-										<button
-											className="hover:bg-red-300	 hover:text-white justify-items-center"
-											onClick={() => removeItemCart(item)}>
-											<BsTrash3 size={20} />
-										</button>
-										<button
-											className="hover:bg-blue-300 hover:text-white justify-items-center"
-										>
-											<BsPencilSquare size={20} />
-										</button>
-									</div>
-								</div>
-
-							</>
-						))}
-						{cart.length > 1 && (
-							<p className="pt-6 text-end">
-								<span className="font-semibold text-card-foreground">Valor total: </span>
-								{formatPrice(total)}
-							</p>
-						)}
-
-
-
 
 					</div>
 

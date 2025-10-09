@@ -1,11 +1,12 @@
 import type { Product } from "@/components/ProductCart";
 import { createContext, useEffect, useState, type ReactNode } from "react";
+import { IoTennisball } from "react-icons/io5";
 
 
 interface CartContextData {
     cart: CartProps[];
     cartAmount: number;
-    addItemCart: (newItem: Product) => void;
+    addItemCart: (newItem: Product, selection: Record<string, string>) => void;
     removeItemCart: (product: CartProps) => void;
     total: number
 }
@@ -19,6 +20,7 @@ interface CartProps {
     category: string;
     amount: number;
     total: number;
+    selections: Record<string, string>;
 }
 
 export const CartContext = createContext({} as CartContextData)
@@ -29,8 +31,12 @@ interface CartProviderProps {
 
 function CartProvider({ children }: CartProviderProps) {
     const [cart, setCart] = useState<CartProps[]>(() => {
-        const storedCart = localStorage.getItem("cart");
-        return storedCart ? JSON.parse(storedCart) : [];
+        try {
+            const storedCart = localStorage.getItem("cart");
+            return storedCart ? JSON.parse(storedCart) : [];
+        } catch {
+            return []
+        }
     });
     const [total, setTotal] = useState(0);
 
@@ -39,29 +45,34 @@ function CartProvider({ children }: CartProviderProps) {
     }, [cart]);
     
 
-    function addItemCart(newItem: Product) {
+    function addItemCart(newItem: Product, selections?: Record<string, string>) {
         const indexItem = cart.findIndex(item => item.id === newItem.id)
 
         // Se o item já estiver no carrinho soma +1 a quantidade e calcula o valor do item 
         if (indexItem !== -1) {
-            let cartList = cart;
-            cartList[indexItem].amount = cartList[indexItem].amount + 1;
-            cartList[indexItem].total = cartList[indexItem].amount * cartList[indexItem].price;
 
-            setCart(cartList);
-            totalResultCart(cartList)
+            const updatedCart = cart.map((item, index) => 
+                index === indexItem 
+                ? {...item, amount: item.amount + 1, total: (item.amount +1) * item.price}
+                : item
+            )
+
+            setCart(updatedCart);
+            totalResultCart(updatedCart)
             return
         }
 
         // Caso não tenha o item no nosso carrinho adiciona o novo a lista
-        let data = {
+        let newCartItem  = {
             ...newItem,
             amount: 1,
-            total: newItem.price
-        }
-
-        setCart(products => [...products, data])
-        totalResultCart([...cart, data])
+            total: newItem.price,
+            selections: selections ?? {}
+        };
+        
+        const updatedCart = [...cart, newCartItem]
+        setCart(updatedCart)
+        totalResultCart(updatedCart)
     }
 
     function removeItemCart( product: CartProps) {
@@ -96,5 +107,3 @@ function CartProvider({ children }: CartProviderProps) {
 }
 
 export default CartProvider
-
-/* Passar em volta das rotas o CartProvider 234 */

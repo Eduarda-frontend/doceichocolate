@@ -1,14 +1,11 @@
 
 import { FaPlus } from "react-icons/fa6";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Button } from "./ui/button";
-import NotebookModal from "./NotebookModal";
 import { formatPrice } from "@/lib/utils";
+import React from "react";
 
-interface ProductOptions {
-    massa: string;
-    recheio: string;
-}
+const NotebookModal = React.lazy(() => import('./NotebookModal'));
 
 export interface Product {
   id: string;
@@ -18,7 +15,7 @@ export interface Product {
   image: string[];
   category: string;
   isNew?: boolean;
-  options: ProductOptions;
+  selections?: Record<string, string>;
 }
 
 interface ProductCardProps {
@@ -37,6 +34,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             src={product.image[0]}
             alt={product.name}
             className="w-full h-48 object-cover"
+            loading="lazy"
           />
         </div>
 
@@ -55,6 +53,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
               </span>
             </div>
             <Button
+              aria-label={`Adicionar ${product.name} ao carrinho`}
               variant="default"
               size="md"
               className="bg-gradient-hero hover:opacity-90 transition-opacity shadow-soft"
@@ -68,7 +67,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
 
       </div>
-      {open && <NotebookModal closeModal={() => setOpen(false)} product={product} key={product.id} />}
+      {open && (
+        <Suspense fallback={null}>
+          <NotebookModal closeModal={() => setOpen(false)} product={product} />
+        </Suspense>)}
 
     </>
   )

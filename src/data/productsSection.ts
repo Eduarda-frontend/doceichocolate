@@ -1,20 +1,18 @@
-import type { ProductSection } from "@/components/NotebookModal";
-
-export const productSections: ProductSection[] = [
+export const productSections = [
   {
     title: "Massa",
     options: [
-      { id: "chocolate", label: "Chocolate"},
-      { id: "baunilha", label: "Baunilha"},
-      { id: "red-velvet", label: "Red Velvet"},
+      { id: "Chocolate", label: "Chocolate"},
+      { id: "Baunilha", label: "Baunilha"},
+      { id: "Red-velvet", label: "Red Velvet"},
     ],
   },
     {
-		title: "Recheio do Bentô Cake",
+		title: "Recheio",
 		options: [
-			{ id: "brigadeiro", label: "Brigadeiro"},
-			{ id: "beijinho", label: "Beijinho"},
-			{ id: "doce-leite", label: "Doce de Leite"},
+			{ id: "Brigadeiro", label: "Brigadeiro"},
+			{ id: "Beijinho", label: "Beijinho"},
+			{ id: "Doce-leite", label: "Doce de Leite"},
 		],
 	}
 ];
