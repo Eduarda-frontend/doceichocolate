@@ -1,37 +1,43 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form"
 
 import { auth } from "@/services/firebaseConnection";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-import { Formulario } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import logo from "@/assets/logo.png";
 
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+import { useState } from "react";
+
+const schema = z.object({
+	email: z.string().email("Digite um e-mail válido"),
+	password: z.string().min(6, "A senha deve ter no mínimo 6 caracteres"),
+});
+
+type FormData = z.infer<typeof schema>;
 
 const Login = () => {
-	const [email, setEmail] = useState("");
-	const [password, setpassword] = useState("");
-	const [visualizaSenha, SetVisualizaSenha] = useState(false);
-	const navigate = useNavigate();
-
-	function handleLogin(data: Record<string, FormDataEntryValue>) {
-		console.log("Login:", data )
-
-		if(email === '' || password === ''){
-			alert('Preencha todos os campos')
-		}
-
-		signInWithEmailAndPassword(auth, email, password)
-		.then(() => {
-			console.log("Logado com sucesso.")
+	const navigate = useNavigate()
+	const [ visualizaSenha, setVisualizaSenha ] = useState(false)
+	const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+		resolver: zodResolver(schema),
+		mode:"onChange"
+	})
+	
+	function onSubmit(data: FormData){
+		signInWithEmailAndPassword(auth, data.email, data.password)
+		.then((user) => {
 			navigate("/", {replace: true})
+			console.log(user)
+			
 		})
-		.catch((error) => {
-			console.log("Erro ao fazer o login:")
-			console.log(error)
+		.catch(err => {
+			console.log("Erro ao logar")
+			console.log(err)
 		})
 	}
 
@@ -53,7 +59,7 @@ const Login = () => {
 					</div>
 
 					<div className="space-y-6">
-						<Formulario onSubmit={handleLogin}>
+						<form onSubmit={handleSubmit(onSubmit)}>
 							<div className="space-y-2 pt-5">
 								<label
 									htmlFor="email"
@@ -63,14 +69,11 @@ const Login = () => {
 								</label>
 								<div>
 									<Input
-										id="email"
 										type="email"
-										value={email}
-										onChange={(e) =>
-											setEmail(e.target.value)
-										}
 										placeholder="seu@email.com"
-										required
+										error={errors.email?.message}
+										register={register}
+										name="email"
 									/>
 								</div>
 							</div>
@@ -84,23 +87,16 @@ const Login = () => {
 								</label>
 								<div className="relative">
 									<Input
-										id="password"
-										type={
-											visualizaSenha ? "text" : "password"
-										}
+										type={visualizaSenha ? "text" : "password"}
 										placeholder="••••••••"
-										value={password}
-										onChange={(e) =>
-											setpassword(e.target.value)
-										}
-										required
+										error={errors.password?.message}
+										register={register}
+										name="password"
 									/>
 									<button
 										type="button"
 										className="absolute top-4 right-5"
-										onClick={() => {
-											SetVisualizaSenha(!visualizaSenha);
-										}}
+										onClick={() => setVisualizaSenha(!visualizaSenha)}
 									>
 										{visualizaSenha ? (
 											<FaRegEye size={20} />
@@ -111,7 +107,7 @@ const Login = () => {
 								</div>
 							</div>
 
-							<div className="flex items-center justify-between text-sm">
+							<div className="flex items-center justify-between text-sm py-5">
 								<label className="flex items-center space-x-2 cursor-pointer">
 									<input
 										type="checkbox"
@@ -136,7 +132,7 @@ const Login = () => {
 							>
 								Entrar
 							</Button>
-						</Formulario>
+						</form>
 
 						<div className="relative">
 							<div className="absolute inset-0 flex items-center">
