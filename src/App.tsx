@@ -1,11 +1,17 @@
 import { BrowserRouter } from "react-router-dom";
 import Rotas from '../routes'
+import AuthProvider from "./contexts/AuthContext";
 
 
 const App = () => (
-      <BrowserRouter>
+
+    <BrowserRouter>
+      <AuthProvider>
+
         <Rotas />
-      </BrowserRouter>
+      </AuthProvider>
+    </BrowserRouter>
+
 );
 
 export default App;
