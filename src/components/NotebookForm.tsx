@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import type { Product } from "./ProductCart";
 import { Button } from "./ui/button";
 import { CartContext } from "@/contexts/cartContext";
-import { Formulario } from "./ui/form";
+import { Formulario } from "./ui/formulario";
 import { productSections } from "@/data/productsSection";
 
 export interface Option {
@@ -25,7 +25,7 @@ const NotebookForm = ({ title, closeModal, product }: notebookFormProps) => {
         setSelection((prev) => ({ ...prev, [sectionTitle]: value }))
     }
 
-    function handleSubmit() {
+    function handleSubmit(data: Record<string, FormDataEntryValue>) {
         const cartItem = product
 
         addItemCart(cartItem, selection);
