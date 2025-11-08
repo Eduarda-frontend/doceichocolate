@@ -25,10 +25,8 @@ const NotebookForm = ({ title, closeModal, product }: notebookFormProps) => {
         setSelection((prev) => ({ ...prev, [sectionTitle]: value }))
     }
 
-    function handleSubmit(data: Record<string, FormDataEntryValue>) {
-        const cartItem = product
-
-        addItemCart(cartItem, selection);
+    function handleSubmit() {
+        addItemCart(product, selection);
         closeModal()
     }
 
