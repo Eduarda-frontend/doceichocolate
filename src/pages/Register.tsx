@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import ProductForm  from "@/components/ProductForm";
+import ProductForm  from "@/components/NewProductForm";
 
 
 const ProductRegistration = () => {
