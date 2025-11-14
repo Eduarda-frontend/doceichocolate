@@ -1,6 +1,6 @@
 import { FiShoppingCart, FiUser, FiHeart } from "react-icons/fi";
 import { MdLogout } from "react-icons/md";
-import { FaRegUserCircle } from "react-icons/fa";
+import { FaHome, FaRegUserCircle } from "react-icons/fa";
 
 import { Button } from "./ui/button";
 import { useContext, useState } from "react";
@@ -62,6 +62,18 @@ const Header = () => {
 				)}
 				{!loadingAuth && signed && (
 					<>
+					
+						<Link to="/">
+							<Button
+								variant="ghost"
+								size="md"
+								className="hidden md:flex"
+
+							>
+								<FaHome className="w-6 h-6" />
+							</Button>
+
+						</Link>
 						<Link to="/register">
 							<Button
 								variant="ghost"

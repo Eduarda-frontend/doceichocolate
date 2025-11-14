@@ -124,3 +124,60 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes pulse-logo {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+.animate-pulse-logo {
+  animation: pulse-logo 1.8s ease-in-out infinite;
+}
+
+/* Fundo piscando entre cinza e branco */
+@keyframes bg-flash {
+  0% {
+    background-color: #f1f1f1; /* cinza claro */
+  }
+  50% {
+    background-color: #ffffff; /* branco */
+  }
+  100% {
+    background-color: #f1f1f1;
+  }
+}
+
+.animate-bg-flash {
+  animation: bg-flash 2s ease-in-out infinite;
+}
+
+/* Animação dos três pontinhos */
+@keyframes dot {
+  0% { opacity: 0; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+  100% { opacity: 0; transform: translateY(0); }
+}
+
+.dot-1 {
+  animation: dot 1.4s infinite;
+}
+
+.dot-2 {
+  animation: dot 1.4s infinite;
+  animation-delay: 0.2s;
+}
+
+.dot-3 {
+  animation: dot 1.4s infinite;
+  animation-delay: 0.4s;
+}
