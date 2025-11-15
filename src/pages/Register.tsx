@@ -10,7 +10,7 @@ const ProductRegistration = () => {
             <HeroSection />
 
             {/* Form Card */}
-            <div className="my-5 bg-card rounded-3xl shadow-card p-8  m-auto w-1/2">
+            <div className="my-5 bg-card rounded-3xl shadow-card p-8  m-auto">
                 <div className="mb-6">
                     <h2 className="text-3xl font-secundario font-bold text-foreground mb-2">
                         Cadastro de Produto

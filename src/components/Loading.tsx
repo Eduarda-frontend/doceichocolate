@@ -14,11 +14,6 @@ const Loading = () => {
                             alt="Logo Doce e Chocolate"
                         />
                     </div>
-
-                    {/* Anel giratório delicado */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div className="w-40 h-40 rounded-2xl border-4 border-transparent border-t-brand-pink/60 animate-spin-slow"></div>
-                    </div>
                 </div>
 
                 {/* Texto Carregando */}
