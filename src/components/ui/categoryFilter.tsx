@@ -13,13 +13,6 @@ export function CategoryFilter({
 }: CategoryFilterProps) {
 	return (
 		<div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-			<Button
-				variant={selectedCategory === 'all' ? 'default' : 'outline'}
-				size="md"
-				onClick={() => onCategoryChange("all")}
-			>
-                Todos
-			</Button>
 
 			{categories.map((category) => (
 				<Button
