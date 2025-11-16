@@ -181,3 +181,16 @@ All colors MUST be HSL.
   animation: dot 1.4s infinite;
   animation-delay: 0.4s;
 }
+
+.custom-scroll::-webkit-scrollbar {
+	width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+	background: hsl(var(--yellow-sweet));
+	border-radius: 999px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+	background: hsl(var(--yellow-sweet) / 0.8);
+}

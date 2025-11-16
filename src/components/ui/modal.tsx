@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+
 
 type ModalProps = {
 	children?: ReactNode;
@@ -16,6 +18,8 @@ const sizeVariants = {
 	xl: "max-w-xl max-h-[80vh]",
 };
 
+
+
 export function Modal({
 	children,
 	closeModal,
@@ -23,7 +27,12 @@ export function Modal({
 	className,
 }: ModalProps) {
 	return (
-		<div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50">
+		<motion.div
+			initial={{ opacity: 0, scale: 0.95 }}
+			animate={{ opacity: 1, scale: 1 }}
+			exit={{ opacity: 0, scale: 0.95 }}
+			transition={{ duration: 0.2, ease: "easeOut" }}
+			className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50">
 			<div
 				className={cn(
 					"w-full p-0 border-0 shadow-none",
@@ -47,6 +56,7 @@ export function Modal({
 					</div>
 				</div>
 			</div>
-		</div>
+
+		</motion.div>
 	);
 }

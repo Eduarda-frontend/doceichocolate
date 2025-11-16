@@ -16,46 +16,55 @@ type notebookFormProps = {
     product: Product;
 };
 
-
 const NotebookForm = ({ title, closeModal, product }: notebookFormProps) => {
-    const { addItemCart } = useContext(CartContext)
-    const [selection, setSelection] = useState<Record<string, string>>({})
+    const { addItemCart } = useContext(CartContext);
+    const [selection, setSelection] = useState<Record<string, string>>({});
 
     function handleChange(sectionTitle: string, value: string) {
-        setSelection((prev) => ({ ...prev, [sectionTitle]: value }))
+        setSelection((prev) => ({ ...prev, [sectionTitle]: value }));
     }
 
     function handleSubmit() {
         addItemCart(product, selection);
-        closeModal()
+        closeModal();
     }
 
     return (
         <Formulario onSubmit={handleSubmit}>
-            <div className="relative z-10 space-y-6">
-                <h2 className="text-2xl pt-3 font-bold text-foreground mb-6">
+            <div className="relative z-10 space-y-4">
+              
+                {/* Título principal */}
+                <h2 className="text-xl pt-3 font-bold text-foreground mb-4">
                     Personalize seu pedido
                 </h2>
 
                 <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-3">
+                    {/* Nome do produto */}
+                    <h3 className="text-base font-semibold text-foreground mb-2">
                         {title}
                     </h3>
+
                     {productSections.map((section) => (
-                        <div key={section.title} className="space-y-3">
-                            <h3 className="text-lg font-semibold text-foreground mb-3">{section.title}</h3>
+                        <div key={section.title} className="space-y-2">
+                            
+                            {/* Título da seção */}
+                            <h3 className="text-sm font-semibold text-foreground mb-2">
+                                {section.title}
+                            </h3>
 
-                            <div className="grid grid-cols-3 gap-3">
-
+                            <div className="grid grid-cols-3 gap-2.5">
                                 {section.options.map((option) => (
-                                    <div className="flex items-center space-x-3 p-3 rounded-lg hover:bg-[hsl(var(--yellow-sweet))]  transition-colors bg-white/50 backdrop-blur-sm border ">
+                                    <div
+                                        key={option.id}
+                                        className="flex items-center space-x-2.5 p-2.5 rounded-lg hover:bg-[hsl(var(--yellow-sweet))] transition-colors bg-white/50 backdrop-blur-sm border"
+                                    >
                                         <label
                                             htmlFor={`${section.title}-${option.id}`}
-                                            className="flex-1 cursor-pointer text-foreground hover:text-primary-foreground transition-colors"
+                                            className="flex-1 cursor-pointer text-xs text-foreground hover:text-primary-foreground transition-colors"
                                         >
                                             <input
                                                 id={`${section.title}-${option.id}`}
-                                                className="me-2 bg-white accent-primary w-4 h-4 flex-1 cursor-pointer"
+                                                className="me-2 accent-primary w-4 h-4 cursor-pointer"
                                                 type="radio"
                                                 name={section.title}
                                                 value={option.id}
@@ -65,31 +74,29 @@ const NotebookForm = ({ title, closeModal, product }: notebookFormProps) => {
                                             {option.label}
                                         </label>
                                     </div>
-
                                 ))}
                             </div>
-
                         </div>
-
-
                     ))}
                 </div>
 
-                <div className="pt-6">
+                {/* Botões */}
+                <div className="pt-4">
                     <div className="flex gap-3">
                         <Button
                             variant="yellow"
                             type="button"
-                            size="md"
+                            size="sm"
                             onClick={closeModal}
                             className="flex-1 text-primary-foreground hover:bg-[hsl(var(--yellow-sweet))] hover:text-primary-foreground"
                         >
                             Cancelar
                         </Button>
+
                         <Button
                             type="submit"
                             variant="yellow"
-                            size="md"
+                            size="sm"
                             className="flex-1 bg-[hsl(var(--yellow-sweet))]"
                         >
                             Adicionar ao Carrinho
@@ -98,7 +105,7 @@ const NotebookForm = ({ title, closeModal, product }: notebookFormProps) => {
                 </div>
             </div>
         </Formulario>
-    )
-}
+    );
+};
 
-export default NotebookForm
+export default NotebookForm;
