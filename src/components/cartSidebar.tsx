@@ -11,11 +11,11 @@ type CartSidebarProps = {
 	isOpen: boolean;
 };
 
-export function CartSidebar({
+const CartSidebar = ({
 	closeOffCanvas,
 	className,
 	isOpen,
-}: CartSidebarProps) {
+}: CartSidebarProps) => {
 	const { cart, removeItemCart, total } = useContext(CartContext)
 
 	return (
@@ -121,3 +121,5 @@ export function CartSidebar({
 		</div>
 	);
 }
+
+export default CartSidebar

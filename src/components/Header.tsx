@@ -4,12 +4,13 @@ import { FaHome, FaRegUserCircle } from "react-icons/fa";
 
 import { Button } from "./ui/button";
 import { useContext, useState } from "react";
-import { CartSidebar } from "./cartSidebar";
+
 import { CartContext } from '../contexts/cartContext'
 import { signOut } from "firebase/auth";
 import { auth } from "@/services/firebaseConnection";
 import { AuthContext } from "@/contexts/AuthContext";
 import { Link } from "react-router-dom";
+import CartSidebar from "./cartSidebar";
 
 const Header = () => {
 	const [cartOpen, setCartOpen] = useState(false);

@@ -107,6 +107,14 @@ const NewProductForm = () => {
     setIsSubmitting(false);
   };
 
+  const handleDragOver = useCallback(
+    (e: React.DragEvent<HTMLDivElement>, index: number) => {
+      e.preventDefault();
+    },
+    []
+  );
+
+
   /* ------------------- JSX ------------------- */
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -162,9 +170,15 @@ const NewProductForm = () => {
         handleFile={handleFile}
         removeImage={removeImage}
         handleDragStart={handleDragStart}
-        handleDragOver={(e) => e.preventDefault()}
+        handleDragOver={(e, index) => handleDragOver(e, index)}
         handleDrop={handleDrop}
+        title="Imagens do Produto"
+        placeholder="Clique ou solte<br>imagens do produto"
       />
+
+
+
+
       <div className="flex justify-end gap-3">
         <Button
           type="button"
