@@ -110,6 +110,7 @@ const NewProductForm = () => {
   const handleDragOver = useCallback(
     (e: React.DragEvent<HTMLDivElement>, index: number) => {
       e.preventDefault();
+      console.log(index)
     },
     []
   );
