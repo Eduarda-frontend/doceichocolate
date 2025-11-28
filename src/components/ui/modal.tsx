@@ -13,8 +13,8 @@ type ModalProps = {
 
 const sizeVariants = {
 	sm: "max-w-sm max-h-[50vh]",
-	md: "max-w-md max-h-[60vh]",
-	lg: "max-w-[95vw] max-h-[70vh]",
+	md: "max-w-md max-h-[95vh] min-w-[400px]" ,
+	lg: "max-w-[90vw] h-[70vh] ",
 	xl: "max-w-xl max-h-[80vh]",
 };
 
@@ -32,12 +32,11 @@ export function Modal({
 			animate={{ opacity: 1, scale: 1 }}
 			exit={{ opacity: 0, scale: 0.95 }}
 			transition={{ duration: 0.2, ease: "easeOut" }}
-			className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50">
+			className="fixed inset-0 z-[9999] flex  items-center justify-center bg-black/50 ">
 			<div
 				className={cn(
-					"w-full p-0 border-0 shadow-none",
+					"w-full max-w-[90vw] max-h-[90vh] p-0 border-0 shadow-none rounded-2xl bg-white overflow-y-auto",
 					sizeVariants[size],
-					"rounded-2xl overflow-hidden bg-white",
 					className
 				)}
 			>

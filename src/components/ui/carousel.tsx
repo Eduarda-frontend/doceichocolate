@@ -38,7 +38,7 @@ export function Carousel({
   return (
     <div
       className={cn(
-        "relative w-full overflow-hidden rounded-2xl bg-background",
+        "relative w-48 md:w-full overflow-hidden rounded-2xl bg-background",
         className
       )}
     >
@@ -59,13 +59,13 @@ export function Carousel({
         <>
           <button
             onClick={prev}
-            className="absolute top-1/2 left-2 -translate-y-1/2 rounded-full bg-black/40 text-white p-2 hover:bg-black/60 transition"
+            className="hidden md:flex absolute top-1/2 left-2 -translate-y-1/2 rounded-full bg-black/40 text-white p-2 hover:bg-black/60 transition"
           >
             <IoChevronBack size={20} />
           </button>
           <button
             onClick={next}
-            className="absolute top-1/2 right-2 -translate-y-1/2 rounded-full bg-black/40 text-white p-2 hover:bg-black/60 transition"
+            className="hidden md:flex  absolute top-1/2 right-2 -translate-y-1/2 rounded-full bg-black/40 text-white p-2 hover:bg-black/60 transition"
           >
             <IoChevronForward size={20} />
           </button>

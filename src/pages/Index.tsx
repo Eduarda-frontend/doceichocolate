@@ -9,32 +9,100 @@ import { useState } from "react";
 
 const Index = () => {
 
-	// agora inicia na primeira categoria (caso prefira outra, basta trocar)
+	// Inicia na primeira categoria
 	const [selectedCategory, setSelectedCategory] = useState(categories[0]);
 
-	// apenas filtra normalmente — sem “Todos”
+	// Produtos filtrados pela categoria selecionada
 	const filteredProducts = product.filter(
 		(p) => p.category === selectedCategory
 	);
 
 	return (
-		<div className="min-w-[517px] bg-background">
-			<Header />
+		<div 
+			className="
+				min-h-screen 
+				bg-background 
+				text-gray-900 
+				flex 
+				flex-col
+				min-w-[400px]
+			"
+			lang="pt-BR"
+		>
+			{/* Cabeçalho semântico */}
+			<header role="navigation" aria-label="Navegação principal">
+				<Header />
+			</header>
+
+			{/* Hero Section com role banner */}
 			<HeroSection />
 
-			<main className="max-w-5xl container mx-auto px-4 py-12 space-y-6">
+			{/* Conteúdo principal */}
+			<main 
+				className="
+					w-full 
+					max-w-7xl 
+					mx-auto 
+					p-4 
+					md:p-6 
+					lg:p-10
+					flex-grow
+					space-y-12
+				"
+				role="main"
+				aria-label="Conteúdo principal"
+			>
 
-				<ProductList
-					products={filteredProducts}
-					categories={categories}
-					selectedCategory={selectedCategory}
-					setSelectedCategory={setSelectedCategory}
-				/>
+				{/* Seção de produtos */}
+				<section 
+					aria-labelledby="produtos-titulo"
+					className="w-full"
+				>
+					<h2 
+						id="produtos-titulo" 
+						className="sr-only"
+					>
+						Lista de produtos disponíveis
+					</h2>
 
-				<TestimonialForm />
-				<FAQ />
-				<ScrollToTop />
+					<ProductList
+						products={filteredProducts}
+						categories={categories}
+						selectedCategory={selectedCategory}
+						setSelectedCategory={setSelectedCategory}
+					/>
+				</section>
+
+				{/* Depoimentos */}
+				<section 
+					aria-labelledby="depoimentos-titulo"
+					className="w-full"
+				>
+					<h2 id="depoimentos-titulo" className="sr-only">
+						Depoimentos de clientes
+					</h2>
+
+					<TestimonialForm />
+				</section>
+
+				{/* FAQ */}
+				<section 
+					aria-labelledby="faq-titulo"
+					className="w-full"
+				>
+					<h2 id="faq-titulo" className="sr-only">
+						Perguntas Frequentes
+					</h2>
+
+					<FAQ />
+				</section>
+
 			</main>
+
+			{/* Botão de voltar ao topo */}
+			<ScrollToTop />
+
+			{/* Footer poderia ser implementado mais tarde */}
 		</div>
 	);
 };

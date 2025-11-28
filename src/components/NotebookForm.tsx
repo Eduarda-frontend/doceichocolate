@@ -38,10 +38,10 @@ const NotebookForm = ({ title, closeModal, product }: notebookFormProps) => {
     }
 
     return (
-        <>
+        <div className="w-full">
             <Formulario onSubmit={handleSubmit}>
-                <div className="relative z-10 space-y-4">
-                    <h2 className="text-xl pt-3 font-bold text-foreground mb-4">
+                <div className="relative z-10 space-y-4 ">
+                    <h2 className="text-xl font-bold text-foreground mb-4">
                         Personalize seu pedido
                     </h2>
 
@@ -119,7 +119,7 @@ const NotebookForm = ({ title, closeModal, product }: notebookFormProps) => {
                     onClose={() => setShowToast(false)}
                 />
             )}
-        </>
+        </div>
     );
 };
 
